@@ -6,4 +6,5 @@ const SearchFood = async (search = "") => {
   return data;
 };
 
+
 export default SearchFood;
