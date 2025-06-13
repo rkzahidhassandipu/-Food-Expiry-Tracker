@@ -13,8 +13,11 @@ import { toast } from "react-toastify";
 
 const EditFood = ({ onClose, foodData, onUpdate }) => {
  const updateFoodStatus = async (id, updatedData) => {
+  console.log(id, updatedData)
     try {
-      const res = await axios.patch(`http://localhost:5000/fridge/${id}`, updatedData);
+      const res = await axios.patch(`https://assignment-sooty-psi.vercel.app/fridge/${id}`, updatedData, {
+        withCredentials: true,
+      });
       console.log("Update result:", res.data);
       toast.success("Your Food is updated")
       // ✅ Update local UI with new data

@@ -1,10 +1,10 @@
 const commentsFood = async (com) => {
-  return fetch("http://localhost:5000/comments", {
+  return fetch("https://assignment-sooty-psi.vercel.app/comments", {
     method: "POST",
-    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(com),
   }).then((res) => res.json());
 };

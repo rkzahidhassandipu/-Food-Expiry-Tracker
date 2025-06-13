@@ -1,8 +1,8 @@
 const deleteFridgeFood = async (id) => {
     try {
-        const respons = await fetch(`http://localhost:5000/fridgeFood/${id}`, {
+        const respons = await fetch(`https://assignment-sooty-psi.vercel.app/fridgeFood/${id}`, {
             method: 'DELETE',
-            credentials: 'include',
+            credentials: "include",
         })
         return await respons.json()
     } catch (error) {

@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const updateFood = async (id, updatedData) => {
+  console.log(id, updatedData)
   try {
     const res = await axios.patch(
-      `http://localhost:5000/fridge/${id}`,
+      `https://assignment-sooty-psi.vercel.app/fridge/${id}`,
       updatedData,
       {
-        withCredentials: true 
+        withCredentials: true,
       }
     );
     return res.data;

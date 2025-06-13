@@ -1,5 +1,7 @@
 const getComments = (foodId) => {
-    return fetch(`http://localhost:5000/comments?foodId=${foodId}`)
+    return fetch(`https://assignment-sooty-psi.vercel.app/comments?foodId=${foodId}`, {
+        credentials: "include",
+    })
     .then((res) => res.json())
 }
 

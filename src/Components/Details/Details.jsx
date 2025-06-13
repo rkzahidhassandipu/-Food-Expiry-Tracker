@@ -25,7 +25,7 @@ const Details = () => {
   const fetchFoodDetails = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/fridgeFood/${id}`);
+      const res = await axios.get(`https://assignment-sooty-psi.vercel.app/fridgeFood/${id}`);
       setData(res.data);
       setLoading(false);
     } catch (err) {

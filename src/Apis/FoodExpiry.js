@@ -1,11 +1,11 @@
 // src/api/FoodExpiryPromise.js
 const postFoodExpiry = (foodData) => {
-  return fetch("http://localhost:5000/FoodExpiry", {
+  return fetch("https://assignment-sooty-psi.vercel.app/FoodExpiry", {
     method: "POST",
-    credentials: 'include',
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(foodData),
   }).then((res) => res.json());
 };

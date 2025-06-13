@@ -1,5 +1,7 @@
 const getFridgeData = () => {
-  return fetch("http://localhost:5000/fridge")
+  return fetch("https://assignment-sooty-psi.vercel.app/fridge", {
+    credentials: 'include',
+  })
     .then((res) => res.json());
 };
 

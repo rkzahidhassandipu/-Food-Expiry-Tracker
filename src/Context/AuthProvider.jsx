@@ -23,9 +23,9 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOutUser = () => {
-  setLoading(true);
-  return signOut(auth);
-};
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -45,15 +45,16 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      if(currentUser?.email){
-        const userData = {email: currentUser.email};
-        axios.post('http://localhost:5000/jwt', userData, {
-          withCredentials: true
-        })
-        .then(res => {
-          console.log(res.data)
-        })
-        .catch(error => console.log(error))
+      if (currentUser?.email) {
+        const userData = { email: currentUser.email };
+        axios
+          .post("https://assignment-sooty-psi.vercel.app/jwt", userData, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => console.log(error));
       }
       console.log("Auth state changed:", currentUser);
     });

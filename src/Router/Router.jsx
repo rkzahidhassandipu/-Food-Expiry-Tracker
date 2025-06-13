@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       {
         path: "fridgeFood/:id",
         Component: Details,
-        loader: ({params}) => fetch(`http://localhost:5000/fridgeFood/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-sooty-psi.vercel.app/fridgeFood/${params.id}`)
       }
     ],
   },

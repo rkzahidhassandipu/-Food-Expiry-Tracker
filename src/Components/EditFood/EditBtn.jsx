@@ -11,7 +11,7 @@ const EditBtn = ({foodId, onUpdate}) => {
 
   useEffect(() => {
     if(showPopup){
-      axios.get(`http://localhost:5000/fridgeFood/${foodId}`)
+      axios.get(`https://assignment-sooty-psi.vercel.app/fridgeFood/${foodId}`)
       .then((res) => {
         setFoodData(res.data);
         setLoading(false)
