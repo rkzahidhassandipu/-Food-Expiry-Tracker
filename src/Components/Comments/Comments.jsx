@@ -15,6 +15,7 @@ const Comments = ({ foodId, newComment }) => {
     });
   }, [foodId]);
 
+  
   // Add new comment to the list instantly
   useEffect(() => {
     if (newComment && newComment.foodId === foodId) {
