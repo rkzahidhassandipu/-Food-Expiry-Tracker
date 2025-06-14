@@ -12,6 +12,8 @@ import {
 } from "../../utility/Status";
 import Delete from "../../Components/Delete/Delete";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../Components/animation/motions";
 
 const MyItems = () => {
   const { user } = useAuth();
@@ -61,7 +63,7 @@ const MyItems = () => {
 
   return (
     <div className="p-4 md:p-10 text-white font-sans">
-       <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Food Expiry || My Items</title>
       </Helmet>
@@ -94,14 +96,18 @@ const MyItems = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredItems.map((item) => {
+              {filteredItems.map((item, idx) => {
                 const expiryStatus = getFoodStatus(item.expiryDate);
                 const expiryColorClass = getExpiryTextColor(expiryStatus);
                 const expiryStatusText = statusText[expiryStatus];
 
                 return (
-                  <tr
+                  <motion.tr
                     key={item._id}
+                    variants={fadeIn("up", idx * 0.1)}
+                    initial="hidden"
+                    animate="show"
+                    viewport={{ once: true }}
                     className="border-t border-gray-700 hover:bg-[#334155] transition"
                   >
                     <td className="px-6 py-4">{item.title}</td>
@@ -125,7 +131,7 @@ const MyItems = () => {
                         onDeleteSuccess={handleDeleteSuccess}
                       />
                     </td>
-                  </tr>
+                  </motion.tr>
                 );
               })}
             </tbody>
@@ -133,19 +139,35 @@ const MyItems = () => {
         </div>
 
         {/* Card view for small screens */}
+        {/* Card view for small screens */}
         <div className="md:hidden space-y-4">
-          {filteredItems.map((item) => {
+          {filteredItems.map((item, idx) => {
             const expiryStatus = getFoodStatus(item.expiryDate);
             const expiryColorClass = getExpiryTextColor(expiryStatus);
             const expiryStatusText = statusText[expiryStatus];
 
             return (
-              <div key={item._id} className="bg-[#1e293b] p-4 rounded-md">
+              <motion.div
+                key={item._id}
+                variants={fadeIn("up", idx * 0.1)}
+                initial="hidden"
+                animate="show"
+                viewport={{ once: true }}
+                className="bg-[#1e293b] p-4 rounded-md"
+              >
                 <h3 className="text-lg font-bold">{item.title}</h3>
-                <p className="text-sm text-gray-400">Category: {item.category}</p>
-                <p className="text-sm text-gray-400">Quantity: {item.quantity}</p>
-                <p className="text-sm text-gray-400">Expiry: {item.expiryDate}</p>
-                <p className={`text-sm ${expiryColorClass}`}>{expiryStatusText}</p>
+                <p className="text-sm text-gray-400">
+                  Category: {item.category}
+                </p>
+                <p className="text-sm text-gray-400">
+                  Quantity: {item.quantity}
+                </p>
+                <p className="text-sm text-gray-400">
+                  Expiry: {item.expiryDate}
+                </p>
+                <p className={`text-sm ${expiryColorClass}`}>
+                  {expiryStatusText}
+                </p>
                 <div className="flex gap-4 mt-3 text-gray-300">
                   <Link to={`/fridgeFood/${item._id}`}>
                     <FaEye className="hover:text-white" />
@@ -160,7 +182,7 @@ const MyItems = () => {
                     onDeleteSuccess={handleDeleteSuccess}
                   />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
