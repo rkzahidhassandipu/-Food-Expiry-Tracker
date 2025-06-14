@@ -6,12 +6,12 @@ import ExpirIcons from "../Fridge/ExpirIcons";
 import Status from "../Fridge/Status";
 import Expiry from "../Fridge/Expiry";
 import useAuth from "../../Hooks/useAuth";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animation/motions"; // adjust path if needed
 
 const ExpiringSoonCard = () => {
   const [expiringItems, setExpiringItems] = useState([]);
   const { user } = useAuth();
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,9 +34,12 @@ const ExpiringSoonCard = () => {
         <p className="text-center text-gray-400">No items expiring soon.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {expiringItems.map((item) => (
-            <div
+          {expiringItems.map((item, index) => (
+            <motion.div
               key={item._id}
+              variants={fadeIn("down", index * 0.2)} // slight stagger by index
+              initial="hidden"
+              animate="show"
               className="bg-slate-900 text-white rounded-2xl shadow-md overflow-hidden"
             >
               <div className="relative">
@@ -77,7 +80,7 @@ const ExpiringSoonCard = () => {
                   See Details
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}

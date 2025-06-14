@@ -4,6 +4,8 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router";
 import "swiper/css";
 import "swiper/css/pagination";
+import { motion } from "motion/react";
+import { fadeIn } from "../animation/motions";
 
 const slides = [
   {
@@ -27,7 +29,13 @@ const BannerSlider = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full hidden lg:flex h-[60vh] my-10">
+    <motion.div
+      variants={fadeIn("up", 0.3)}
+      initial="hidden"
+      animate="show"
+      viewport={{once: false, amount: 0.7}}
+      className="w-full hidden lg:flex h-[60vh] my-10"
+    >
       <Swiper
         modules={[Autoplay, Pagination]}
         loop={true}
@@ -65,7 +73,7 @@ const BannerSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 
