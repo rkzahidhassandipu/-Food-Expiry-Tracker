@@ -13,6 +13,7 @@ import {
 } from "../../utility/Status";
 import NotesSection from "./NotesSection ";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 const Details = () => {
   const { user } = useAuth();
@@ -25,7 +26,9 @@ const Details = () => {
   const fetchFoodDetails = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`https://assignment-sooty-psi.vercel.app/fridgeFood/${id}`);
+      const res = await axios.get(
+        `https://assignment-sooty-psi.vercel.app/fridgeFood/${id}`
+      );
       setData(res.data);
       setLoading(false);
     } catch (err) {
@@ -49,11 +52,17 @@ const Details = () => {
   const expiryStatusText = statusText[expiryStatus];
 
   return (
-    <div className="min-h-screen w-4/5 mx-auto text-white px-6 py-4">
+    <motion.div
+      className="min-h-screen w-4/5 mx-auto text-white px-6 py-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <Helmet>
         <meta charSet="utf-8" />
         <title>Food Expiry || Details</title>
       </Helmet>
+
       <button
         className="flex items-center text-sm mb-4 text-blue-400 hover:text-blue-300"
         onClick={() => navigate(-1)}
@@ -62,17 +71,27 @@ const Details = () => {
       </button>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Image */}
-        <div className="lg:w-1/2">
+        {/* Animated Image Section */}
+        <motion.div
+          className="lg:w-1/2"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
           <img
             src={data.imageUrl}
             alt="Food"
             className="rounded-lg w-full object-cover h-full max-h-[500px]"
           />
-        </div>
+        </motion.div>
 
-        {/* Info Section */}
-        <div className="lg:w-1/2 flex flex-col justify-between bg-[#0f172a] p-6 rounded-lg shadow-lg">
+        {/* Animated Info Section */}
+        <motion.div
+          className="lg:w-1/2 flex flex-col justify-between bg-[#0f172a] p-6 rounded-lg shadow-lg"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div>
             <h1 className="text-2xl font-bold">{data.title}</h1>
             <p className={`${expiryColorClass} font-bold`}>
@@ -99,7 +118,6 @@ const Details = () => {
                 <span className="text-gray-400">Added:</span>{" "}
                 {new Date(data.currentDate).toLocaleString()}
               </p>
-
               <p>
                 <span className="text-gray-400">Expires:</span>{" "}
                 <span className={expiryColorClass}>{data.expiryDate}</span>
@@ -126,12 +144,18 @@ const Details = () => {
               </Suspense>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
-      <div>
+
+      {/* Notes Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
         <NotesSection data={data} />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
