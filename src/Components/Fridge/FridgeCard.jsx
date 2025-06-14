@@ -1,14 +1,22 @@
 import React from "react";
-import { FaCheckCircle, FaClock, FaExclamationTriangle } from "react-icons/fa";
+import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animation/motions"; // adjust path if needed
+
 import Expiry from "./Expiry";
 import Status from "./Status";
 import ExpirIcons from "./ExpirIcons";
-import { Link } from "react-router";
 
-const FridgeCard = ({ item }) => {
+const FridgeCard = ({ item, index = 0 }) => {
   return (
-    <div className="bg-slate-900 text-white rounded-2xl">
-      <div className="relative  rounded-2xl">
+    <motion.div
+      variants={fadeIn("up", index * 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+      className="bg-slate-900 text-white rounded-2xl shadow-md overflow-hidden"
+    >
+      <div className="relative rounded-2xl">
         <img
           src={item.imageUrl}
           alt={item.name}
@@ -21,9 +29,7 @@ const FridgeCard = ({ item }) => {
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold capitalize">{item.title}</h2>
-          <div>
-            <ExpirIcons expireFood={item?.expiryDate} />
-          </div>
+          <ExpirIcons expireFood={item?.expiryDate} />
         </div>
         <p className="text-sm text-gray-400 mt-1">Category: {item.category}</p>
         <p className="text-sm text-gray-400">Quantity: {item.quantity}</p>
@@ -31,12 +37,15 @@ const FridgeCard = ({ item }) => {
           <Expiry expireFood={item?.expiryDate} />
         </p>
         <p className="text-sm text-gray-500 mt-1 mb-3">Added by: {item.userName}</p>
-        <p className="border-t mb-4 border-gray-700"></p>
-        <Link to={`/fridgeFood/${item._id}`} className="border border-green-700 py-2 duration-300 hover:bg-gray-800 rounded mt-2">
-            <button className="w-full cursor-pointer text-green-700">See Details</button>
+        <div className="border-t border-gray-700 mb-3"></div>
+        <Link
+          to={`/fridgeFood/${item._id}`}
+          className="block w-full border border-green-700 py-2 text-green-700 hover:bg-gray-800 rounded duration-300 text-center"
+        >
+          See Details
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
