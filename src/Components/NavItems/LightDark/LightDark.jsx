@@ -1,40 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { CiLight } from "react-icons/ci";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { useState, useEffect } from 'react';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 const LightDark = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Initialize theme from localStorage or system preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
-      document.documentElement.setAttribute("data-theme", savedTheme);
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      setDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(prefersDark);
-      document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   }, []);
 
+  // Toggle theme and save to localStorage
   const toggleTheme = () => {
-    const newTheme = darkMode ? "light" : "dark";
-    setDarkMode(!darkMode);
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
   };
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Toggle light/dark theme"
-      className="btn btn-circle btn-outline"
-      title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      className="btn btn-ghost btn-circle"
+      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {darkMode ? (
-        <CiLight className="text-yellow-400 w-6 h-6" />
+        <FiSun className="w-5 h-5 text-yellow-500" />
       ) : (
-        <FaMoon className="text-gray-700 w-6 h-6" />
+        <FiMoon className="w-5 h-5" />
       )}
     </button>
   );

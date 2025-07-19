@@ -7,6 +7,7 @@ import { RiHomeHeartLine } from "react-icons/ri";
 import { NavLink } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import User from "../../User/User";
+import LightDark from "../LightDark/LightDark";
 
 const NavLinks = () => {
   const {user} = useAuth();
@@ -54,6 +55,7 @@ const NavLinks = () => {
                 <span>My Items</span>
               </NavLink>
             </li>
+            <LightDark />
             <User />
           </>
         ) : (

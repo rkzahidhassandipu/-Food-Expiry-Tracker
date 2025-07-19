@@ -6,7 +6,8 @@ import { Link } from "react-router"; // ✅ FIXED: use react-router-dom
 
 const Navbar = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-gray-700">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-transparent dark:bg-black/30 backdrop-blur-md border-b border-gray-700"
+>
       <div className="w-4/5 mx-auto navbar">
         <div className="navbar-start w-full">
           <div className="dropdown">
@@ -38,14 +39,14 @@ const Navbar = () => {
           </Link>
         </div>
 
+
+          
         <div className="navbar-end flex-1/2">
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 dark:text-white">
               <NavLinks />
             </ul>
           </div>
-
-          {/* <LightDark /> */}
         </div>
       </div>
     </div>

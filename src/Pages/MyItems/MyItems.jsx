@@ -3,7 +3,7 @@ import { FaPlusCircle, FaEye } from "react-icons/fa";
 import { Link } from "react-router";
 import EditBtn from "../../Components/EditFood/EditBtn";
 import useAuth from "../../Hooks/useAuth";
-import getEmailData from "../../Apis/getEmailData";
+import getFridgeData from "../../Apis/getFridgeData";
 import Loading from "../../Components/Loading/Loading";
 import {
   getFoodStatus,
@@ -27,7 +27,7 @@ const MyItems = () => {
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      getEmailData(user.email, user.accessToken)
+      getFridgeData(user.email, user.accessToken)
         .then((data) => {
           const dataArray = Array.isArray(data)
             ? data

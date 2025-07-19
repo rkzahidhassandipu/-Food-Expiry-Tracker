@@ -1,7 +1,10 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @plugin "daisyui" {
-  themes: dark --prefersdark, cupcake;
-}
+   themes: light --default, dark --prefersdark;
+ }
 .active{
   background: green;
 }

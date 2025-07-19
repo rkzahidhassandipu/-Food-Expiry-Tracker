@@ -34,7 +34,7 @@ const User = () => {
   if (!user) return null;
 
   return (
-    <div className="relative mr-6" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
       <img
         src={user?.photoURL}
         alt={user?.displayName}
