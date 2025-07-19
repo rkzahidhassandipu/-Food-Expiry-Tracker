@@ -46,36 +46,33 @@ export default function Fridge() {
   });
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 py-6 text-base-content transition-colors duration-300">
-      <Helmet>
+    <div className="min-h-screen w-4/5 mx-auto text-white p-6">
+       <Helmet>
         <meta charSet="utf-8" />
         <title>Food Expiry || Fridge</title>
       </Helmet>
-
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold">Community Fridge</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-2">
-          Browse all food items shared by the community. Filter by category,
-          status, or search for specific items.
-        </p>
-      </div>
+      <h1 className="text-4xl font-bold text-center mb-4">Community Fridge</h1>
+      <p className="text-center text-gray-400 mb-6">
+        Browse all food items shared by the community. Filter by category,
+        status, or search for specific items.
+      </p>
 
       {/* Filters */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 bg-base-200 p-4 rounded-xl shadow-md mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center mb-6 py-6 px-3 rounded-xl duration-300 hover:shadow-md shadow-green-700 bg-gray-900">
         <input
           type="text"
           placeholder="Search food items..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="input input-bordered w-full"
+          className="p-2 rounded-md bg-slate-800 text-white w-full"
         />
 
         <select
-          className="select select-bordered w-full"
+          className="p-2 rounded-md bg-slate-800 text-white w-full"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="All">All Categories</option>
+          <option value="All">All</option>
           <option value="Vegetables">Vegetables</option>
           <option value="Fruits">Fruits</option>
           <option value="Dairy">Dairy</option>
@@ -84,7 +81,7 @@ export default function Fridge() {
         </select>
 
         <select
-          className="select select-bordered w-full"
+          className="p-2 rounded-md bg-slate-800 text-white w-full"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
@@ -95,15 +92,15 @@ export default function Fridge() {
         </select>
       </div>
 
-      {/* Grid Display */}
+      {/* Grid */}
       {loading ? (
         <Loading />
       ) : filteredItems.length === 0 ? (
-        <div className="text-center text-error text-lg mt-10">
+        <p className="text-center text-red-400">
           No matching food items found.
-        </div>
+        </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredItems.map((item, idx) => (
             <FridgeCard key={idx} item={item} />
           ))}
