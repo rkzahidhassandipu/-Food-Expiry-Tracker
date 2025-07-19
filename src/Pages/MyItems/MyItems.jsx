@@ -83,60 +83,67 @@ const MyItems = () => {
         </div>
 
         {/* Table for medium+ screens */}
-        <div className="hidden md:block bg-[#1e293b] rounded-lg overflow-x-auto">
-          <table className="w-full text-left table-auto min-w-[700px]">
-            <thead className="text-gray-400 bg-[#1e293b] border-b border-gray-600">
-              <tr>
-                <th className="px-6 py-4">Name</th>
-                <th className="px-6 py-4">Category</th>
-                <th className="px-6 py-4">Quantity</th>
-                <th className="px-6 py-4">Expiry Date</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredItems.map((item, idx) => {
-                const expiryStatus = getFoodStatus(item.expiryDate);
-                const expiryColorClass = getExpiryTextColor(expiryStatus);
-                const expiryStatusText = statusText[expiryStatus];
+        <div className="overflow-x-auto rounded-xl shadow-md border dark:border-gray-700 bg-white dark:bg-gray-900">
+  <table className="table w-full min-w-[800px]">
+    <thead className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm uppercase">
+      <tr>
+        <th className="px-6 py-4">Name</th>
+        <th className="px-6 py-4">Category</th>
+        <th className="px-6 py-4">Quantity</th>
+        <th className="px-6 py-4">Expiry Date</th>
+        <th className="px-6 py-4">Status</th>
+        <th className="px-6 py-4 text-right">Actions</th>
+      </tr>
+    </thead>
 
-                return (
-                  <motion.tr
-                    key={item._id}
-                    variants={fadeIn("up", idx * 0.1)}
-                    initial="hidden"
-                    animate="show"
-                    viewport={{ once: true }}
-                    className="border-t border-gray-700 hover:bg-[#334155] transition"
-                  >
-                    <td className="px-6 py-4">{item.title}</td>
-                    <td className="px-6 py-4">{item.category}</td>
-                    <td className="px-6 py-4">{item.quantity}</td>
-                    <td className="px-6 py-4">{item.expiryDate}</td>
-                    <td className={`px-6 py-4 ${expiryColorClass}`}>
-                      {expiryStatusText}
-                    </td>
-                    <td className="px-6 py-4 text-right flex justify-end gap-4 text-gray-300">
-                      <Link to={`/fridgeFood/${item._id}`}>
-                        <FaEye className="hover:text-white cursor-pointer" />
-                      </Link>
-                      <EditBtn
-                        foodId={item._id}
-                        onUpdate={handleUpdateSuccess}
-                        className="text-lg hover:text-white"
-                      />
-                      <Delete
-                        item={item._id}
-                        onDeleteSuccess={handleDeleteSuccess}
-                      />
-                    </td>
-                  </motion.tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+    <tbody className="text-gray-800 dark:text-gray-100">
+      {filteredItems.map((item, idx) => {
+        const expiryStatus = getFoodStatus(item.expiryDate);
+        const expiryColorClass = getExpiryTextColor(expiryStatus);
+        const expiryStatusText = statusText[expiryStatus];
+
+        return (
+          <motion.tr
+            key={item._id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.05 }}
+            className="hover:bg-gray-50 dark:hover:bg-gray-800 border-b border-gray-200 dark:border-gray-700"
+          >
+            <td className="px-6 py-4 font-medium">{item.title}</td>
+            <td className="px-6 py-4">{item.category}</td>
+            <td className="px-6 py-4">{item.quantity}</td>
+            <td className="px-6 py-4">{item.expiryDate}</td>
+            <td className={`px-6 py-4 font-semibold ${expiryColorClass}`}>
+              {expiryStatusText}
+            </td>
+            <td className="px-6 py-4 text-right">
+              <div className="flex justify-end items-center gap-3">
+                <Link
+                  to={`/fridgeFood/${item._id}`}
+                  className="text-blue-500 hover:text-blue-700"
+                  title="View"
+                >
+                  <FaEye />
+                </Link>
+                <EditBtn
+                  foodId={item._id}
+                  onUpdate={handleUpdateSuccess}
+                  className="text-yellow-500 hover:text-yellow-600"
+                />
+                <Delete
+                  item={item._id}
+                  onDeleteSuccess={handleDeleteSuccess}
+                />
+              </div>
+            </td>
+          </motion.tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+
 
         {/* Card view for small screens */}
         {/* Card view for small screens */}
