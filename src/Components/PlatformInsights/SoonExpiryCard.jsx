@@ -22,14 +22,14 @@ const SoonExpiryCard = () => {
   }, []);
 
   return (
-    <div className="w-80 bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center shadow text-gray-800 dark:text-white space-y-2 transition-colors duration-300">
+    <div className="w-80 bg-white dark:bg-gray-900 p-6 rounded-xl text-center shadow-md border border-green-300 dark:border-gray-700 transition-all duration-300">
       <div className="flex justify-center">
         <FaClock className="text-yellow-500 text-3xl" />
       </div>
-      <h2 className="font-bold text-5xl text-yellow-500 my-5">
+      <h2 className="font-bold text-5xl text-green-600 dark:text-yellow-400 my-4">
         {expiringCount}
       </h2>
-      <p className="text-lg text-gray-700 dark:text-gray-200">
+      <p className="text-md text-gray-700 dark:text-gray-300 font-medium">
         Items Expiring Soon (Next 5 Days)
       </p>
     </div>

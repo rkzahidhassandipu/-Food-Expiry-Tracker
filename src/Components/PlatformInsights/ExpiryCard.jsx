@@ -22,12 +22,16 @@ const ExpiryCard = () => {
   }, []);
 
   return (
-    <div className="w-80 bg-gray-800 p-6 rounded-lg text-center shadow text-white space-y-2">
+    <div className="w-80 bg-white dark:bg-gray-800 p-6 rounded-xl text-center shadow-md border border-red-200 dark:border-gray-700 transition-all duration-300">
       <div className="flex justify-center">
-        <GoAlertFill className="text-red-400 text-3xl" />
+        <GoAlertFill className="text-red-500 dark:text-red-400 text-3xl" />
       </div>
-      <h2 className="font-bold text-5xl text-red-400 my-5">{expiredCount}</h2>
-      <p className="text-gray-200 text-lg">Expired Items on Platform</p>
+      <h2 className="font-bold text-5xl text-red-600 dark:text-red-400 my-4">
+        {expiredCount}
+      </h2>
+      <p className="text-gray-700 dark:text-gray-300 text-lg font-medium">
+        Expired Items on Platform
+      </p>
     </div>
   );
 };
