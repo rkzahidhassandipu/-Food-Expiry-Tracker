@@ -70,7 +70,7 @@ const MyItems = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold">My Food Items</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">My Food Items</h1>
             <p className="text-gray-400">
               Manage your personal food inventory.
             </p>
@@ -153,9 +153,9 @@ const MyItems = () => {
                 initial="hidden"
                 animate="show"
                 viewport={{ once: true }}
-                className="bg-[#1e293b] p-4 rounded-md"
+                className="bg-[#1e293b] p-4 rounded-md text-gray-800 dark:text-white"
               >
-                <h3 className="text-lg font-bold">{item.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800 dark:text-white">{item.title}</h3>
                 <p className="text-sm text-gray-400">
                   Category: {item.category}
                 </p>

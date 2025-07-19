@@ -1,45 +1,57 @@
-import React from 'react';
-import Loading from '../../Components/Loading/Loading';
-import Logo from '../../Components/NavItems/Logo/Logo';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
+import Logo from "../../Components/NavItems/Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0F172A] text-white py-10 px-5">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-        {/* Logo and Description */}
+    <footer className="bg-gray-50 dark:bg-[#0F172A] text-gray-800 dark:text-gray-100 px-6 pt-12 pb-6">
+      <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-3 border-b border-gray-200 dark:border-gray-700 pb-8">
+        {/* Logo + Description */}
         <div>
-          <div className="flex items-center space-x-2 mb-2">
-           <Link to={`/`}>
+          <Link to="/" className="flex items-center mb-4">
             <Logo />
-           </Link>
-          </div>
-          <p className="text-sm text-gray-400">
+          </Link>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             Helping you reduce food waste and manage your kitchen inventory efficiently.
           </p>
         </div>
 
         {/* Useful Links */}
         <div>
-          <h2 className="text-lg font-semibold mb-2">Useful Links</h2>
-          <ul className="space-y-1 text-sm text-gray-300">
-            <li><a className='hover:text-green-600' href="#">My Fridge</a></li>
-            <li><a className='hover:text-green-600' href="#">Add New Food</a></li>
-            <li><a className='hover:text-green-600' href="#">My Items List</a></li>
+          <h2 className="text-base font-semibold mb-4">Useful Links</h2>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/my-fridge" className="hover:text-green-600 dark:hover:text-green-400 transition">
+                My Fridge
+              </Link>
+            </li>
+            <li>
+              <Link to="/add-food" className="hover:text-green-600 dark:hover:text-green-400 transition">
+                Add New Food
+              </Link>
+            </li>
+            <li>
+              <Link to="/my-items" className="hover:text-green-600 dark:hover:text-green-400 transition">
+                My Items List
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <h2 className="text-lg font-semibold mb-2">Contact Us</h2>
-          <p className="text-sm text-gray-300">123 FoodSaver Lane, Kitchen City, KC 12345</p>
-          <p className="text-sm text-gray-300">Email: support@foodexpiry.com</p>
+          <h2 className="text-base font-semibold mb-4">Contact Us</h2>
+          <ul className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
+            <li>123 FoodSaver Lane</li>
+            <li>Kitchen City, KC 12345</li>
+            <li>Email: support@foodexpiry.com</li>
+          </ul>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
-        © 2025 FoodExpiry. All rights reserved.
+      {/* Bottom Bar */}
+      <div className="pt-6 text-center text-xs text-gray-500 dark:text-gray-400">
+        © {new Date().getFullYear()} FoodExpiry. All rights reserved.
       </div>
     </footer>
   );
