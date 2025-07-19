@@ -34,14 +34,14 @@ const BannerSlider = () => {
       initial="hidden"
       animate="show"
       viewport={{ once: false, amount: 0.7 }}
-      className="w-full flex h-[60vh] my-10 "
+      className="w-full my-6 sm:my-8 md:my-10 lg:my-12"
     >
       <Swiper
         modules={[Autoplay, Pagination]}
         loop={true}
         autoplay={{ delay: 4000 }}
         pagination={{ clickable: true }}
-        className="w-full h-full rounded-3xl overflow-hidden"
+        className="w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] rounded-2xl overflow-hidden"
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={idx}>
@@ -56,15 +56,17 @@ const BannerSlider = () => {
               <div className="absolute inset-0 bg-black/50"></div>
 
               {/* Content */}
-              <div className="relative z-10 h-full flex items-center justify-center text-center">
-                <div className="text-white px-6 max-w-2xl">
-                  <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <div className="relative z-10 h-full flex items-center justify-center text-center px-4 sm:px-6">
+                <div className="text-white max-w-2xl">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
                     {slide.title}
                   </h2>
-                  <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>
+                  <p className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6">
+                    {slide.subtitle}
+                  </p>
                   <button
                     onClick={() => navigate("/register")}
-                    className="bg-primary px-6 py-2 rounded-md text-white hover:bg-primary/80 transition"
+                    className="bg-primary px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base text-white hover:bg-primary/80 transition"
                   >
                     Get Started
                   </button>

@@ -22,7 +22,7 @@ const MainLayout = () => {
         <Navbar />
       </header>
 
-      <main className="pt-20 min-h-[80vh] dark:bg-red-900">
+      <main className="pt-20 min-h-[80vh] dark:bg-gray-900">
         {loading ? (
           <Loading />
         ) : (
