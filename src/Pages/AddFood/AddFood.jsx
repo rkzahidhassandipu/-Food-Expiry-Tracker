@@ -8,7 +8,7 @@ import {
   FaRegFileAlt,
   FaPlus,
 } from "react-icons/fa";
-import postFoodExpiry from "../../Apis/FoodExpiry"; // Adjust path as needed
+import postFoodExpiry from "../../Apis/FoodExpiry";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -45,42 +45,42 @@ const AddFood = () => {
         currentDate: new Date().toISOString(),
         userName: user?.displayName,
       };
-      const response = await postFoodExpiry(formWithData);
-      console.log("Food item added:", response);
+      await postFoodExpiry(formWithData);
       toast.success("Food item successfully added!");
       setFormData({ ...initialFormData, email: user?.email });
       navigate("/myItems");
     } catch (error) {
-      toast.error("Error posting food item:", error);
+      toast.error("Failed to add food item.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br py-20 from-[#0B1120] to-[#0F172A] flex justify-center items-center px-4">
+    <div className="min-h-screen py-20 px-4 flex justify-center items-center bg-white dark:bg-gradient-to-br dark:from-[#0B1120] dark:to-[#0F172A]">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Food Expiry || Add Food</title>
       </Helmet>
-      <div className="w-full max-w-2xl bg-[#111827] rounded-xl p-8 shadow-lg">
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2">
+
+      <div className="w-full max-w-2xl bg-white dark:bg-[#111827] rounded-xl p-8 shadow-lg">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white text-center mb-2">
           Add New Food Item
         </h2>
-        <p className="text-center text-gray-400 mb-8">
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
           Fill in the details to add an item to your inventory.
         </p>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Food Title */}
           <div>
-            <label className="flex items-center gap-2 text-white mb-1">
-              <FaLeaf className="text-green-400" />
+            <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+              <FaLeaf className="text-green-500" />
               Food Title *
             </label>
             <input
               name="title"
               type="text"
               placeholder="e.g., Organic Apples"
-              className="input input-bordered w-full bg-[#1F2937] text-white placeholder:text-gray-400"
+              className="input input-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white placeholder:text-gray-400"
               required
               onChange={handleChange}
               value={formData.title}
@@ -89,15 +89,15 @@ const AddFood = () => {
 
           {/* Image URL */}
           <div>
-            <label className="flex items-center gap-2 text-white mb-1">
-              <FaImage className="text-green-400" />
+            <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+              <FaImage className="text-green-500" />
               Food Image URL
             </label>
             <input
               name="imageUrl"
               type="text"
               placeholder="https://example.com/image.jpg"
-              className="input input-bordered w-full bg-[#1F2937] text-white placeholder:text-gray-400"
+              className="input input-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white placeholder:text-gray-400"
               onChange={handleChange}
               value={formData.imageUrl}
             />
@@ -106,8 +106,8 @@ const AddFood = () => {
           {/* Category and Quantity */}
           <div className="flex flex-col md:flex-row gap-5">
             <div className="flex-1">
-              <label className="flex items-center gap-2 text-white mb-1">
-                <FaTags className="text-green-400" />
+              <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+                <FaTags className="text-green-500" />
                 Category *
               </label>
               <select
@@ -115,7 +115,7 @@ const AddFood = () => {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="select select-bordered w-full bg-[#1F2937] text-white"
+                className="select select-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white"
               >
                 <option value="" disabled>
                   Select category
@@ -126,16 +126,17 @@ const AddFood = () => {
                 <option value="Meat">Meat</option>
               </select>
             </div>
+
             <div className="flex-1">
-              <label className="flex items-center gap-2 text-white mb-1">
-                <FaSortAmountUpAlt className="text-green-400" />
+              <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+                <FaSortAmountUpAlt className="text-green-500" />
                 Quantity *
               </label>
               <input
                 name="quantity"
                 type="text"
                 placeholder="e.g., 5 pieces, 1 kg"
-                className="input input-bordered w-full bg-[#1F2937] text-white placeholder:text-gray-400"
+                className="input input-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white placeholder:text-gray-400"
                 required
                 value={formData.quantity}
                 onChange={handleChange}
@@ -145,14 +146,14 @@ const AddFood = () => {
 
           {/* Expiry Date */}
           <div>
-            <label className="flex items-center gap-2 text-white mb-1">
-              <FaCalendarAlt className="text-green-400" />
+            <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+              <FaCalendarAlt className="text-green-500" />
               Expiry Date *
             </label>
             <input
               name="expiryDate"
               type="date"
-              className="input input-bordered w-full bg-[#1F2937] text-white"
+              className="input input-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white"
               required
               onChange={handleChange}
               value={formData.expiryDate}
@@ -161,13 +162,13 @@ const AddFood = () => {
 
           {/* Description */}
           <div>
-            <label className="flex items-center gap-2 text-white mb-1">
-              <FaRegFileAlt className="text-green-400" />
+            <label className="flex items-center gap-2 text-gray-700 dark:text-white mb-1">
+              <FaRegFileAlt className="text-green-500" />
               Description
             </label>
             <textarea
               name="description"
-              className="textarea textarea-bordered w-full bg-[#1F2937] text-white placeholder:text-gray-400"
+              className="textarea textarea-bordered w-full bg-white dark:bg-[#1F2937] text-gray-800 dark:text-white placeholder:text-gray-400"
               placeholder="Any additional notes..."
               rows="3"
               onChange={handleChange}
