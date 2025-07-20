@@ -14,7 +14,7 @@ const FridgeCard = ({ item, index = 0 }) => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
-      className="bg-slate-900 text-white rounded-2xl shadow-md overflow-hidden"
+      className="bg-white dark:bg-gray-800 text-white rounded-2xl shadow-md overflow-hidden "
     >
       <div className="relative rounded-2xl">
         <img
