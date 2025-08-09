@@ -44,12 +44,3 @@ const Delete = ({ item, onDeleteSuccess, Delete = false }) => {
 };
 
 export default Delete;
-// <div
-//   className={
-//     delete
-//       ? "w-1/2 flex items-center justify-center gap-2 bg-red-600 cursor-pointer hover:bg-red-500 text-white py-2 px-4 rounded-md"
-//       : "flex gap-4 items-center justify-center cursor-pointer"
-//   }
-// >
-//   {/* Your content here */}
-// </div>
