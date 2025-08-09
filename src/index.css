@@ -9,7 +9,6 @@
   background: green;
   color: white;
 }
-
 @keyframes bounceImage {
   0%, 100% {
     transform: translateY(-10px);
