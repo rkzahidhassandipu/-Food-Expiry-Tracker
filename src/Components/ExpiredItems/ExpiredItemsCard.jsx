@@ -33,7 +33,10 @@ const ExpiredItemsCard = () => {
   }, []);
 
   // Category handling
-  const categories = ["All", ...new Set(expiringItems.map((item) => item.category))];
+  const categories = [
+    "All",
+    ...new Set(expiringItems.map((item) => item.category)),
+  ];
   const filteredItems =
     selectedCategory === "All"
       ? expiringItems
@@ -94,8 +97,9 @@ const ExpiredItemsCard = () => {
             {currentItems.map((item) => (
               <div
                 key={item._id}
-                className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white rounded-xl shadow-md overflow-hidden transition hover:shadow-xl"
+                className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white rounded-xl shadow-md overflow-hidden transition hover:shadow-xl flex flex-col h-full"
               >
+                {/* Image */}
                 <div className="relative">
                   <img
                     src={item.imageUrl}
@@ -106,21 +110,33 @@ const ExpiredItemsCard = () => {
                     <Status expireFood={item?.expiryDate} />
                   </div>
                 </div>
-                <div className="p-4 space-y-2">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-bold text-lg">{item.title}</h3>
-                    <ExpirIcons expireFood={item?.expiryDate} />
+
+                {/* Content fills space */}
+                <div className="p-4 flex flex-col flex-1">
+                  <div className="space-y-2 flex-1">
+                    <div className="flex justify-between items-center">
+                      <h3 className="font-bold text-lg">{item.title}</h3>
+                      <ExpirIcons expireFood={item?.expiryDate} />
+                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      Category: {item.category}
+                    </p>
+                    <p className="text-sm">Quantity: {item.quantity}</p>
+                    <p className="text-sm text-green-600">
+                      <Expiry expireFood={item?.expiryDate} />
+                    </p>
+                    <p className="text-xs text-gray-500 pb-4">
+                      Added by: {item.userName}
+                    </p>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Category: {item.category}</p>
-                  <p className="text-sm">Quantity: {item.quantity}</p>
-                  <p className="text-sm text-green-600">
-                    <Expiry expireFood={item?.expiryDate} />
-                  </p>
-                  <p className="text-xs text-gray-500">Added by: {item.userName}</p>
+
+                  {/* Button pinned to bottom */}
                   <Link
                     to={user ? `/fridgeFood/${item._id}` : "/login"}
-                    state={user ? undefined : { from: `/fridgeFood/${item._id}` }}
-                    className="block mt-3 text-center py-2 border border-green-600 text-green-600 rounded hover:bg-green-600 hover:text-white transition"
+                    state={
+                      user ? undefined : { from: `/fridgeFood/${item._id}` }
+                    }
+                    className="mt-auto block text-center py-2 border border-green-600 text-green-600 rounded hover:bg-green-600 hover:text-white transition"
                   >
                     See Details
                   </Link>
@@ -139,19 +155,21 @@ const ExpiredItemsCard = () => {
               >
                 Prev
               </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                <button
-                  key={pageNum}
-                  onClick={() => changePage(pageNum)}
-                  className={`px-3 py-1 rounded text-sm border ${
-                    currentPage === pageNum
-                      ? "bg-green-600 text-white border-green-600"
-                      : "bg-white dark:bg-gray-700 border-gray-300 text-gray-700 dark:text-white"
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              ))}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (pageNum) => (
+                  <button
+                    key={pageNum}
+                    onClick={() => changePage(pageNum)}
+                    className={`px-3 py-1 rounded text-sm border ${
+                      currentPage === pageNum
+                        ? "bg-green-600 text-white border-green-600"
+                        : "bg-white dark:bg-gray-700 border-gray-300 text-gray-700 dark:text-white"
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                )
+              )}
               <button
                 onClick={() => changePage(currentPage + 1)}
                 disabled={currentPage === totalPages}

@@ -7,6 +7,8 @@ import QuickTips from "../../Components/QuickTips/QuickTips";
 import ExpiringSoon from "../../Components/ExpiringSoon/ExpiringSoon";
 import ExpiredItems from "../../Components/ExpiredItems/ExpiredItems";
 import { Helmet } from "react-helmet";
+import AboutSection from "../../Components/About/AboutSection";
+import FoodGallery from "../../Components/galleryItems/Testimonials";
 
 const Home = () => {
   const info = useAuth();
@@ -27,6 +29,8 @@ const Home = () => {
         <ExpiringSoon />
         <ExpiredItems />
         <WhyUseFoodExpiry />
+        <AboutSection />
+        <FoodGallery />
         <QuickTips />
       </div>
     </div>

@@ -66,7 +66,7 @@ const BannerSlider = () => {
                   </p>
                   <button
                     onClick={() => navigate("/register")}
-                    className="bg-primary px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base text-white hover:bg-primary/80 transition"
+                    className="bg-green-600 px-4 sm:px-6 py-2 sm:py-3 rounded-md text-sm sm:text-base text-white hover:bg-green-700/80 transition"
                   >
                     Get Started
                   </button>

@@ -10,7 +10,7 @@ import User from "../../User/User";
 import LightDark from "../LightDark/LightDark";
 
 const NavLinks = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   return (
     <>
       <li>
@@ -55,7 +55,6 @@ const NavLinks = () => {
                 <span>My Items</span>
               </NavLink>
             </li>
-            <LightDark />
             <User />
           </>
         ) : (
