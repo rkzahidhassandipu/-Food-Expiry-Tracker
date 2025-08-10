@@ -3,7 +3,7 @@ import { BiFridge } from "react-icons/bi";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaUserPlus } from "react-icons/fa";
 import { MdLogin, MdOutlineFormatListNumbered } from "react-icons/md";
-import { RiHomeHeartLine } from "react-icons/ri";
+import { RiContactsBook3Line, RiHomeHeartLine } from "react-icons/ri";
 import { NavLink } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import User from "../../User/User";
@@ -32,7 +32,7 @@ const NavLinks = () => {
       <li>
         <NavLink className="px-4 py-2 rounded-md text-sm mr-4" to="/fridge">
           <span>
-            <BiFridge className="text-xl" />
+            <RiContactsBook3Line className="text-xl" />
           </span>
           <span>Contact</span>
         </NavLink>
