@@ -30,12 +30,12 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen py-20 bg-gradient-to-r from-slate-800 to-gray-900 flex items-center justify-center px-4">
+    <div className="min-h-screen py-20 bg-gradient-to-r bg-white dark:bg-gray-800 flex items-center justify-center px-4">
        <Helmet>
         <meta charSet="utf-8" />
         <title>Food Expiry || Login</title>
       </Helmet>
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-gray-800 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-10">
+      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden p-6 md:p-10">
         
         {/* Animation */}
         <div className="hidden md:flex justify-center items-center">
@@ -44,7 +44,7 @@ const Login = () => {
 
         {/* Login Form */}
         <div className="w-full max-w-md mx-auto">
-          <h2 className="text-4xl font-bold text-center text-primary mb-6">
+          <h2 className="text-4xl font-bold text-center text-green-600 mb-6">
             Welcome Back!
           </h2>
           
