@@ -30,7 +30,7 @@ const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="px-4 py-2 rounded-md text-sm mr-4" to="/fridge">
+        <NavLink className="px-4 py-2 rounded-md text-sm mr-4" to="/contact">
           <span>
             <RiContactsBook3Line className="text-xl" />
           </span>
