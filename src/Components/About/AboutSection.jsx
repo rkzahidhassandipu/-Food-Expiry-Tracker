@@ -58,7 +58,7 @@ const AboutSection = () => {
           <div className="mt-6">
             <Link
               to={'/fridge'}
-              className="inline-block px-5 uppercase py-2 sm:px-6 sm:py-3 bg-green-400 text-white rounded-lg shadow hover:bg-primary-dark transition text-sm sm:text-base"
+              className="inline-block px-5 uppercase py-2 sm:px-6 sm:py-3 bg-green-600 text-white rounded-lg shadow hover:bg-primary-dark transition text-sm sm:text-base"
             >
               VISIT OUR fridge
             </Link>
