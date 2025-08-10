@@ -10,6 +10,7 @@ import Fridge from "../Pages/Fridge/Fridge";
 import PrivateRouter from "./PrivateRouter";
 import Details from "../Components/Details/Details";
 import NotFound from "../Pages/NotFound/NotFound";
+import Contact from "../Pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ export const router = createBrowserRouter([
           <PrivateRouter>
             <Fridge />
           </PrivateRouter>
+        ),
+      },
+      {
+        path: "contact",
+        element: (
+          <Contact />
         ),
       },
       {
