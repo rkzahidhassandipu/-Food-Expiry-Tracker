@@ -20,10 +20,9 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="relative py-16 bg-white overflow-hidden">
+    <section className="relative py-16 bg-white dark:bg-transparent overflow-hidden">
       {/* Section title */}
       <div className="text-center mb-12">
-        <span className="text-green-600 font-semibold text-lg">Testimonials</span>
         <h2 className="text-3xl md:text-4xl font-bold mt-2">
           Our <span className="text-green-600">Customers</span> Feedback
         </h2>
@@ -38,7 +37,7 @@ const Testimonials = () => {
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center"
           >
             {/* Image */}
             <img
